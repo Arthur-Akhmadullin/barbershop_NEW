@@ -1,0 +1,42 @@
+{% load static %}
+
+
+<div class="modal-content">
+    <button class="modal-content-close" type="button" 
+    title="Закрыть">Закрыть</button>
+    <h2 class="modal-content-title">Личный кабинет</h2>
+    <p>Введите свой логин и пароль</p>	
+    <form class="login-form" action="{% url 'login' %}" method="POST">
+		{% csrf_token %}
+        {{ form.username }}
+		{{ form.password }}
+		<input type="hidden" name="next" value="{{ next }}" />
+        <label class="login-checkbox">
+            <input type="checkbox" name="remember">
+            <span class="checkbox-indicator"></span>
+            Запомните меня
+        </label>
+		
+        <a href="{% url 'password_reset' %}" class="restore">Я забыл пароль!</a>
+		</br>
+		<a href="{% url 'register' %}" class="restore">Регистрация</a>		
+        <button class="btn" type="submit">Войти</button>
+    </form>
+</div>
+
+<div class="modal-content-map">
+    <button class="modal-content-close" type="button" 
+    title="Закрыть">Закрыть</button>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1998.6036253002935!2d30.320858715898975!3d59.93871916905446!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4696310fca145cc1%3A0x42b32648d8238007!2z0JHQvtC70YzRiNCw0Y8g0JrQvtC90Y7RiNC10L3QvdCw0Y8g0YPQuy4sIDE5LzgsINCh0LDQvdC60YIt0J_QtdGC0LXRgNCx0YPRgNCzLCAxOTExODY!5e0!3m2!1sru!2sru!4v1571387182957!5m2!1sru!2sru" 
+    width="766" height="561" frameborder="0" style="border:0;" 
+    allowfullscreen="">
+    </iframe>
+</div>
+
+<!--
+<div id="yandex-map"></div>
+-->
+<div class="modal-overlay"></div>
+
+<script src="{% static 'js/popup.js' %}"></script>
+<script src="{% static 'js/gallery.js' %}"></script>

@@ -1,0 +1,86 @@
+{% extends 'barber_app/barber_base.html' %}
+{% load static %}
+
+{% block title %}
+	Интернет-магазин - {{ block.super }}
+{% endblock %}
+
+{% block bodyclass %}
+	class="inner-page"
+{% endblock %}
+
+
+{% block content %}
+    <h1 class="shop-title">
+        Средства для ухода       
+    </h1>
+    
+    <ul class="breadcrumbs">
+        <li><a href="{% url 'main_page_url' %}">Главная</a></li>
+		{% if not good_group %}
+			<li class = "current">Магазин</li>
+		{% endif %}        
+		{% if good_group %}
+			<li><a href="{% url 'shop_page_url' %}">Магазин</a></li>
+			<li class="current"> {{ good_group }}</li>
+		{% endif %}
+    </ul>
+    
+    <div class="shop-content">
+        <div class="shop-columns clearfix">
+            <div class="shop-columns-left">
+                					
+				{% include 'include/filter.html' %}
+					               
+                
+            </div>
+
+            <div class="shop-columns-right">
+                <section class="goods-list">
+				
+				{% if not goods.object_list %}
+					<p style=
+					"font-size:24px", 
+					"font-family:PT Sans Narrow", 
+					"color: #ffffff"> 
+					Товары по данному запросу не найдены 
+					</p>
+				{% endif %}
+				
+				{% for good in goods.object_list %}
+					<article class="good">
+						<img src="{{ good.preview_image.url }}" width="220" height="165" alt="">
+						<div class="good-title">
+							<span class="good-category">{{ good.category }}</span>
+							<span class="good-name">"{{ good.name }}"</span>
+						</div>
+						<div class="good-price-content">
+							<span class="price good-price">{{ good.price }} руб.</span>							
+							<a class="btn good-btn" href="{{ good.get_absolute_url }}">Купить</a>
+						</div>
+					</article>
+				{% endfor %}
+				
+                </section>
+				
+				{% if is_paginated %}
+					<ul class="pagination">					
+						{% for n in goods.paginator.page_range %}
+							{% if goods.number == n %}
+								<li class="current"><span>{{ n }}</span></li>
+							{% elif n > goods.number|add:-3 and n < goods.number|add:3 %}
+								{% if isFilter %}
+									<li><a href="{{ filterRequestPath }}&page={{ n }}">{{ n }}</a></li>
+								{% else %}
+									<li><a href="?page={{ n }}">{{ n }}</a></li>
+								{% endif %}
+							{% endif %}
+						{% endfor %}
+					</ul>
+				{% endif %}
+				
+            </div>
+
+        </div>      
+    </div>    
+{% endblock %}

@@ -1,0 +1,11 @@
+{% load static %}
+
+{% if messages %}
+	<ul class="messages clearfix">
+		{% for message in messages %}
+			<li class="{{ message.tags }}">
+				{{ message|safe }}
+			</li>
+		{% endfor %}
+	</ul>
+{% endif %}

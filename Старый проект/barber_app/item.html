@@ -1,0 +1,69 @@
+{% extends 'barber_app/barber_base.html' %}
+{% load static %}
+
+{% block title %}
+	Набор для путешествий "BAXTER OF CALIFORNIA" - {{ block.super }}
+{% endblock %}
+
+{% block bodyclass %}
+	class="inner-page"
+{% endblock %}
+
+
+
+{% block content %}
+    <h1 class="item-title">
+        {{ item.category }} "{{ item.name }}"       
+    </h1>
+    
+    <ul class="breadcrumbs">
+        <li><a href="{% url 'main_page_url' %}">Главная</a></li>
+        <li><a href="{% url 'shop_page_url' %}">Магазин</a></li>
+        <li><a href="{% url 'shop_page_url_by_groups' item.good_group.slug %}">{{ item.good_group }}</a></li>
+        <li class="current">{{ item.category }} "{{ item.name }}"</li>
+    </ul>
+    
+    <div class="item-content">
+        <div class="item-columns clearfix">
+            <div class="item-columns-left">	
+			
+				<div class="item-gallery">                    
+                    <img class="main-photo" src="{{ item.images.all.first.image.url }}" 
+                        width="460" height="500">  
+					{% for image in item.images.all %}
+						<img class="additional-photo" src="{{ image.image.url }}" width="140" height="150">
+					{% endfor %}
+                </div>
+				
+            </div>
+
+            <div class="item-columns-right">
+                <div class="description">
+                    <div class="presence clearfix">						
+						<span>{% if item.available %} Есть в наличии {% else %} Нет в наличии {% endif %}</span>	
+                        <span class="article">Артикул: {{ item.article }}</span> 
+                    </div>
+
+                    <p class="item-short-text">
+						{{ item.short_description }}
+                    </p>                    
+					
+					<!-- Эту форму надо вставить в div price-content, который выше -->
+					<div class="price-content">
+						<form action="{% url 'cart_add' item.id %}" method="post">
+						<span class="price">{{ item.price }} руб.</span>
+							{{ cart_good_form }}
+							{% csrf_token %}
+							<input class="btn" type="submit" value="В корзину">
+						</form>
+					</div>
+
+                    <h2>В набор входят:</h2>
+                    <ul class="custom-list-1">
+                        {{ item.description|safe }}
+                    </ul>
+                </div>
+            </div>
+        </div>            
+    </div>    
+{% endblock %}

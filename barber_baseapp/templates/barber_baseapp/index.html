@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+	Главная - {{ block.super }}
+{% endblock %}
+
+{% block content %}
+    <div class="index-logo">
+        <img src="{% static 'images/index-logo.png' %}" width="368" height="204" alt="Барбершоп Бородинский">
+    </div>
+
+    <section class="features clearfix">
+        <div class="feature-item">
+            <b class="feature-name">Быстро</b>
+            <p>Мы делаем свою работу быстро! Два часа пролетят незаметно и вы -
+                счастливый обладатель стильной стрижки-минутки!</p>
+        </div>
+        <div class="feature-item">
+            <b class="feature-name">Круто</b>
+            <p>Забудьте, как вы стриглись раньше. Мы сделаем из вас звезду
+                футбола или кино! Во всяком случае внешне.</p>
+        </div>
+        <div class="feature-item">
+            <b class="feature-name">Дорого</b>
+            <p>Наши мастера - профессионалы своего дела и не могут стоить дешево. К
+                тому же, разве цена не дает определенный статус?</p>
+        </div>
+    </section>
+
+    <div class="index-content clearfix">
+        <div class="index-content-left">
+            <h2 class="index-content-title">Новости</h2>
+            <ul class="news-preview">
+				{% for news in pasts_news %}
+                <li>
+                    <p>{{ news.body|truncatechars:100|safe }}</p>
+                    <time datetime=" {{news.date}} "> {{ news.date|date:"m F" }}</time>
+                </li>                
+				{% endfor %}
+            </ul>
+            <a class="btn" href="{% url 'all_news_url' %}">Все новости</a>
+        </div>
+        <div class="index-content-right">
+            <h2 class="index-content-title">Фотогалерея</h2>
+            <div class="gallery">
+                <figure class="gallery-content">
+                    <img src="{% static 'images/photo-gallery1.jpg' %}" width="286" 
+                    height="164" alt="">
+					<img class="gallery-img-none" src="{% static 'images/photo-gallery2.jpg' %}" width="286" 
+                    height="164" alt="">
+					<img class="gallery-img-none" src="{% static 'images/photo-gallery3.jpg' %}" width="286" 
+                    height="164" alt="">
+					<img class="gallery-img-none" src="{% static 'images/photo-gallery4.jpg' %}" width="286" 
+                    height="164" alt="">
+                </figure>            
+                <button class="btn btn-gallery-prev" disabled>Назад</button>
+                <button class="btn btn-gallery-next">Вперед</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="index-content clearfix">
+        <div class="index-content-left">
+            <h2 class="index-content-title">Контактная информация</h2>
+            <p>
+                Барбершоп Бородинский<br>
+                Адрес: г. Санкт-Петербург, ул. Конюшенная, д. 19/8<br>
+                Телефон: +7 (495) 666-02-66
+            </p>
+            <p>
+                Время работы:<br>
+                Пн-пт: с 10.00 до 22.00<br>
+                Сб-вс: с 10.00 до 19.00
+            </p>
+            <a class="btn js-open-map" href="#">Как проехать</a>
+            <a class="btn" href="#">Обратная связь</a>
+        </div>
+        <div class="index-content-right">
+            <h2 class="index-content-title">Как записаться</h2>
+            <p>Укажите желаемую дату и мы свяжемся с вами для подтверждения брони</p>
+            <form class="appointment-form" action="{% url 'record' %}" method="POST">
+                {{ recordform.name }}
+				{{ recordform.phone }}
+				{{ recordform.date }}
+				{{ recordform.time }}
+                <button class="btn" type="submit">Отправить</button>
+				{% csrf_token %}
+            </form>            
+        </div>
+    </div>
+{% endblock %}
