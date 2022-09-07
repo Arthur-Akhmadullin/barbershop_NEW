@@ -38,6 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 	'barber_baseapp',
+    'barber_shop',
+    'ckeditor',
+    'ckeditor_uploader',
 ]
 
 MIDDLEWARE = [
@@ -122,9 +125,12 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),
-	#'barber_baseapp/static/barber_baseapp'
-	]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),	
+]
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+#visual editor CKEDITOR settings
+CKEDITOR_UPLOAD_PATH = 'uploads/'
+CKEDITOR_BASEPATH = '/static/ckeditor/ckeditor/'

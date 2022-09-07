@@ -32,14 +32,14 @@
         <div class="index-content-left">
             <h2 class="index-content-title">Новости</h2>
             <ul class="news-preview">
-				{% for news in pasts_news %}
+				{% for news in last_news %}
                 <li>
                     <p>{{ news.body|truncatechars:100|safe }}</p>
                     <time datetime=" {{news.date}} "> {{ news.date|date:"m F" }}</time>
                 </li>                
 				{% endfor %}
             </ul>
-            <a class="btn" href="{% url 'all_news_url' %}">Все новости</a>
+            <a class="btn" href="{% url 'news_page' %}">Все новости</a>
         </div>
         <div class="index-content-right">
             <h2 class="index-content-title">Фотогалерея</h2>
@@ -81,12 +81,12 @@
             <p>Укажите желаемую дату и мы свяжемся с вами для подтверждения брони</p>
             <form class="appointment-form" action="{% url 'record' %}" method="POST">
                 {{ recordform.name }}
-				{{ recordform.phone }}
-				{{ recordform.date }}
-				{{ recordform.time }}
+                {{ recordform.phone }}
+                {{ recordform.date }}
+                {{ recordform.time }}
                 <button class="btn" type="submit">Отправить</button>
-				{% csrf_token %}
-            </form>            
+                {% csrf_token %}
+            </form>
         </div>
     </div>
 {% endblock %}

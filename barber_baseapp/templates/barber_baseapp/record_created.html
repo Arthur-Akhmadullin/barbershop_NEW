@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+	Вы записаны!
+{% endblock %}
+
+{% block bodyclass %}
+	class="inner-page"
+{% endblock %}
+
+{% block content %}
+<h1>Вы записаны!</h1>
+<p>{{ record.name }}, ваша заявка принята! Запись на {{ record.time }} {{ record.date }}. В ближайшее время мы вам позвоним.</p>
+{% endblock %}

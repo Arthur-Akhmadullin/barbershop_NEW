@@ -1,0 +1,4 @@
+<h2>{{ n.title }}</h2>
+<h4>{{ n.date }}</h4>
+<p class="short-text">{{ n.body|truncatewords:w_count|safe }}</p>
+<a href="{{ n.get_absolute_url }}" class="btn">Полный текст</a>

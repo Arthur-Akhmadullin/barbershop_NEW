@@ -4,18 +4,18 @@
     <div class="container clearfix">
         <nav class="main-navigation">
 			{% with request.resolver_match.url_name as url_name %}
-				{% if url_name != 'main_page_url' %}
-					<a class="logo-inner" href="{% url 'main_page_url' %}">
+				{% if url_name != 'main_page' %}
+					<a class="logo-inner" href="{% url 'main_page' %}">
 						<img src="{% static 'images/inner-logo.png' %}" width="111"
 						height="24" alt="Барбершоп Бородинский">
 					</a>
 				{% endif %}				
 				
 			<ul>
-				<li class="{% if url_name == 'main_page_url' %}active{% endif %}"><a href="{% url 'main_page_url' %}">Информация</a></li>
-				<li class="{% if url_name == 'news_page_url' or url_name == 'all_news_url' %}active{% endif %}"><a href="{% url 'all_news_url' %}">Новости</a></li>        
-				<li class="{% if url_name == 'price_page_url' %}active{% endif %}"><a href="{% url 'price_page_url' %}">Прайс-лист</a></li>        
-				<li class="{% if url_name == 'shop_page_url' %}active{% endif %}"><a href="{% url 'shop_page_url' %}">Магазин</a></li>        
+				<li class="{% if url_name == 'main_page' %}active{% endif %}"><a href="{% url 'main_page' %}">Информация</a></li>
+				<li class="{% if url_name == 'news_page' or url_name == 'news_detail' %}active{% endif %}"><a href="{% url 'news_page' %}">Новости</a></li>
+				<li class="{% if url_name == 'price_page' %}active{% endif %}"><a href="{% url 'price_page' %}">Прайс-лист</a></li>
+				<li class="{% if url_name == 'shop_page_url' %}active{% endif %}"><a href="#">Магазин</a></li>
 				<!--<li><a href="#">Контакты</a></li>-->				
 			</ul>
 			{% endwith %}
@@ -24,7 +24,7 @@
 		<div class="cart-block">		
 			{% with total_items=cart|length %}
 				{% if cart|length > 0 %}						
-					<a class="login2" href="{% url 'cart_detail' %}">
+					<a class="login2" href="#">
 						{{ total_items }} шт-{{ cart.get_total_price }} р.
 					</a>
 				{% else %}
@@ -35,9 +35,9 @@
 		
         <div class="user-block">
             {% if request.user.is_authenticated %}
-				<a class="login2" href="{% url 'dashboard' %}">Кабинет</a>				
+				<a class="login2" href="#">Кабинет</a>
 			{% else %}
-				<a class="login" href="{% url 'login' %}">Вход</a>
+				<a class="login" href="#">Вход</a>
 			{% endif %}
         </div>
     </div>

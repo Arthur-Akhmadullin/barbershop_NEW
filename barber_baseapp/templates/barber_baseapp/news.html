@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+	Новости - {{ block.super }}
+{% endblock %}
+
+{% block bodyclass%}
+	class="inner-page"
+{% endblock %}
+
+
+{% block content %} 
+    <h1 class="inner-page-title">
+        Новости      
+    </h1>
+    <ul class="breadcrumbs">        
+        <li><a href="{% url 'main_page' %}">Главная</a></li>
+        <li class="current">Новости</li>        
+    </ul>
+
+    <div class="inner-content">
+        <div class="big-heading">
+            <h2>Читай, пока стрижем!</h2>
+        </div>
+
+
+		<div class="inner-columns clearfix">
+			{% include 'barber_baseapp/include/news_card.html' with n=last_news w_count="30" %}
+		</div>
+		
+		
+		<div class="inner-columns clearfix">
+			{% for item in news %}
+				{% if forloop.counter|divisibleby:2 %}
+					<div class="inner-columns-right">
+						{% include 'barber_baseapp/include/news_card.html' with n=item w_count="15" %}
+					</div>
+				{% else %}
+					<div class="inner-columns-left">
+						{% include 'barber_baseapp/include/news_card.html' with n=item w_count="15" %}
+					</div>
+				{% endif %}
+			{% endfor %}
+        </div>
+
+		{% include 'include/pagination.html' %}
+
+    </div>    
+{% endblock %}

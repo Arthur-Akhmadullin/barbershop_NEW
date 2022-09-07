@@ -6,7 +6,7 @@
     title="Закрыть">Закрыть</button>
     <h2 class="modal-content-title">Личный кабинет</h2>
     <p>Введите свой логин и пароль</p>	
-    <form class="login-form" action="{% url 'login' %}" method="POST">
+    <form class="login-form" action="#" method="POST">
 		{% csrf_token %}
         {{ form.username }}
 		{{ form.password }}
@@ -17,9 +17,9 @@
             Запомните меня
         </label>
 		
-        <a href="{% url 'password_reset' %}" class="restore">Я забыл пароль!</a>
+        <a href="#" class="restore">Я забыл пароль!</a>
 		</br>
-		<a href="{% url 'register' %}" class="restore">Регистрация</a>		
+		<a href="#" class="restore">Регистрация</a>
         <button class="btn" type="submit">Войти</button>
     </form>
 </div>

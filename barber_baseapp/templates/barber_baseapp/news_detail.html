@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+	{{ news.title }}
+{% endblock %}
+
+{% block bodyclass%}
+	class="inner-page"
+{% endblock %}
+
+
+{% block content %} 
+    <h1 class="inner-page-title">
+        Новости      
+    </h1>
+    <ul class="breadcrumbs">        
+        <li><a href="{% url 'main_page' %}">Главная</a></li>
+        <li><a href="{% url 'news_page' %}">Новости</a></li>
+		<li class="current">{{ news.title }}</li>
+    </ul>
+
+    <div class="inner-content"> 
+		<div class="inner-columns clearfix">
+			<h2>{{ news.title }}</h2>
+			<h4>{{ news.date }}</h4>
+			<p>{% autoescape off %}{{ news.body }}{% endautoescape %}</p>		
+		</div>	
+    </div>    
+{% endblock %}

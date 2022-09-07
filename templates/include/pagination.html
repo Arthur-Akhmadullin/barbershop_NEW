@@ -1,0 +1,9 @@
+<ul class="pagination">
+    {% for p in paginator.page_range %}
+        {% if page_obj.number == p %}
+        <li class="current"><span>{{ p }}</span></li>
+        {% elif p > page_obj.number|add:-3 and p < page_obj.number|add:3 %}
+        <li><a href="?page={{ p }}">{{ p }}</a></li>
+        {% endif %}
+    {% endfor %}
+</ul>

@@ -1,3 +1,18 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import News, Record, Price
+
+
+@admin.register(News)
+class NewsAdmin(admin.ModelAdmin):
+    list_display = ['title', 'date']
+
+
+@admin.register(Record)
+class RecordAdmin(admin.ModelAdmin):
+    list_display = ['name', 'phone', 'date', 'time', 'confirmed']
+
+
+@admin.register(Price)
+class PriceAdmin(admin.ModelAdmin):
+    list_display = ['service_name', 'price']
