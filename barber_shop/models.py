@@ -1,4 +1,5 @@
 from django.db import models
+from django.shortcuts import reverse
 from time import time
 
 from ckeditor_uploader.fields import RichTextUploadingField
@@ -71,8 +72,8 @@ class Product(models.Model):
     def __str__(self):
         return self.name.manufacturer
 
-    #def get_absolute_url(self):
-        #return reverse('item_page_url', kwargs={'good_group_slug': self.good_group.slug, 'slug': self.slug})
+    def get_absolute_url(self):
+        return reverse('shop_detail_page', kwargs={'group_slug': self.group.slug, 'slug': self.slug})
 
     #def get_update_url(self):
     #return reverse('post_update_url', kwargs={'slug': self.slug})

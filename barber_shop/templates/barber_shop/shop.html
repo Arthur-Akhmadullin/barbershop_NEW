@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+	Интернет-магазин - {{ block.super }}
+{% endblock %}
+
+{% block bodyclass %}
+	class="inner-page"
+{% endblock %}
+
+
+{% block content %}
+    <h1 class="shop-title">
+        Средства для ухода       
+    </h1>
+    
+    <ul class="breadcrumbs">
+        <li><a href="{% url 'main_page' %}">Главная</a></li>
+		{% if not selected_group %}
+			<li class = "current">Магазин</li>
+		{% else %}
+			<li><a href="{% url 'shop_page' %}">Магазин</a></li>
+			<li class="current"> {{ selected_group }}</li>
+		{% endif %}
+    </ul>
+    
+    <div class="shop-content">
+        <div class="shop-columns clearfix">
+            <div class="shop-columns-left">
+				{% include 'barber_shop/include/filter.html' %}
+            </div>
+
+            <div class="shop-columns-right">
+                <section class="goods-list">
+				{% include 'barber_shop/include/product_card.html' %}
+                </section>
+				{% include 'include/pagination.html' %}
+            </div>
+        </div>      
+    </div>    
+{% endblock %}

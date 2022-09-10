@@ -1,0 +1,28 @@
+<form class="shop-form" action="{% url 'shop_filter' %}" method="get" name="filter">
+	 <fieldset class="shop-filter">
+		<legend>Производители:</legend>
+		{% for name in names_in_filter %}
+			<label class="manufacters-checkbox">
+				<input type="checkbox" name="product_name" value="{{ name }}"
+					   {% if name in filter_check_points.name %} checked {% endif %}>
+				<span class="checkbox-indicator"></span>
+				{{ name }}
+			</label>
+		{% endfor %}		
+	</fieldset>
+
+	<fieldset class="shop-filter">
+		<legend>Группы товаров:</legend>
+		{% for group in groups_in_filter %}
+			<label class="group-goods-radio">
+				<input type="radio" name="product_group" value="{{ group.id }}"
+					   {% if group.id == selected_group.id %} checked {% endif %}
+					   {% if group.id == filter_check_points.group %} checked {% endif %}>
+				<span class="radio-indicator"></span>
+				{{ group.group }}
+			</label>
+		{% endfor %}
+	</fieldset>
+	
+	<button class="btn" type="submit">Показать</button>
+</form>

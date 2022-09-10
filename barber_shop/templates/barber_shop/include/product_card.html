@@ -1,0 +1,22 @@
+{% if not products %}
+<p style=
+           "font-size:24px",
+"font-family:PT Sans Narrow",
+"color: #ffffff">
+Товары по данному запросу не найдены
+</p>
+{% endif %}
+
+{% for product in products %}
+<article class="good">
+    <img src="{{ product.preview_image.url }}" width="220" height="165" alt="">
+    <div class="good-title">
+        <span class="good-category">{{ product.category }}</span>
+        <span class="good-name">"{{ product.name }}"</span>
+    </div>
+    <div class="good-price-content">
+        <span class="price good-price">{{ product.price }} руб.</span>
+        <a class="btn good-btn" href="{{ product.get_absolute_url }}">Купить</a>
+    </div>
+</article>
+{% endfor %}

@@ -28,7 +28,6 @@ class RecordCreate(View):
 
 
 class NewsListView(ListView):
-	model = News
 	template_name = 'barber_baseapp/news.html'
 	context_object_name = 'news'
 	paginate_by = 4

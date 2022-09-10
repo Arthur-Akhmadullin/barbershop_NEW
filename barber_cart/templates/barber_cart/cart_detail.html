@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+	Ваша корзина - {{ block.super }}
+{% endblock %}
+
+{% block bodyclass %}
+	class="inner-page"
+{% endblock %}
+
+{% block content %}
+	<h1>Ваша корзина</h1>
+	
+	<ul class="breadcrumbs">
+        <li><a href="{% url 'main_page' %}">Главная</a></li>
+        <li><a href="{% url 'shop_page' %}">Магазин</a></li>
+        <li class="current">Корзина</li>
+    </ul>
+	
+	</br>
+	<table class="cart">
+		<thead>
+			<tr>
+			<th style="width: 15%; text-align: left">Фото</th>			
+			<th style="width: 20%; text-align: left">Товар</th>
+			<th style="width: 30%; text-align: left">Количество</th>
+			<th style="width: 10%; text-align: left">Удалить</th>
+			<th style="width: 15%; text-align: left">Цена за единицу</th>
+			<th style="width: 10%; text-align: left">Всего</th>
+			</tr>
+		</thead>
+		
+		<tbody>
+			{% for item in cart %}				
+				{% with product=item.product %}
+				<tr>
+					<td>
+					<a href="{{ product.get_absolute_url }}">
+						<img src="{% if product.preview_image %} {{ product.preview_image.url }}
+						{% else %} {% static 'images/noimg.jpg' %} {% endif %}" width="100" height="75">
+					</a>
+					</td>
+					
+					<td>{{ product.name }}</td>
+					
+					<td>
+						<form action="{% url 'cart_add' product.id %}" method="post">
+						{{ item.update_quantity_form.quantity }}
+						{{ item.update_quantity_form.update }}
+						<input class="btn" type="submit" value="Обновить">
+						{% csrf_token %}
+						</form>				
+					</td>
+					
+					<td><a class="btn" href="{% url 'cart_remove' product.id %}">Удалить</a></td>
+					
+					<td class="num">{{ item.price }} РУБ.</td>
+					
+					<td class="num">{{ item.total_price }} РУБ.</td>
+				
+				</tr>				
+				{% endwith %}
+			{% endfor %}
+			
+			
+			<tr class="total">
+			<td>Общая сумма заказа</td>
+			<td colspan="4"></td>
+			<td class="num">{{ cart.get_total_price }} РУБ.</td>
+			</tr>
+		</tbody>
+	</table>
+	
+	<p class="text-right">
+	<a href="{% url 'shop_page' %}" class="btn">Продолжить покупки</a>
+	{% if cart.request is None and cart.get_total_price == 0 %}
+		<a href="" class="btn disabled">Продолжить оформление</a>
+	{% else %}
+		<a href="{% url 'order_create' %}" class="btn">Продолжить оформление</a>
+	{% endif %}
+	</p>
+{% endblock %}
