@@ -35,9 +35,9 @@
 		
         <div class="user-block">
             {% if request.user.is_authenticated %}
-				<a class="login2" href="#">Кабинет</a>
+				<a class="login2" href="{% url 'dashboard' %}">Кабинет</a>
 			{% else %}
-				<a class="login" href="#">Вход</a>
+				<a class="login" href="{% url 'login' %}">Вход</a>
 			{% endif %}
         </div>
     </div>

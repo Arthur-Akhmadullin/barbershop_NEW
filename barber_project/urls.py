@@ -23,6 +23,7 @@ from django.conf import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('ckeditor/', include('ckeditor_uploader.urls')),
+    path('account/', include('barber_account.urls')),
     path('cart/', include('barber_cart.urls')),
     path('orders/', include('barber_orders.urls')),
     path('shop/', include('barber_shop.urls')),

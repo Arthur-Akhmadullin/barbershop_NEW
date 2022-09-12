@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+	Создание аккаунта
+{% endblock %}
+
+{% block bodyclass %}
+	class="inner-page"
+{% endblock %}
+
+{% block content %}
+<div style="width: 300px">
+	<h1>Создание аккаунта</h1>
+	<p>Для регистрации введите данные в форму ниже:</p>
+	<form class="login-form" action="." method="post">
+		{{ user_form.as_p }}
+		{% csrf_token %}
+		<p><input class="btn" type="submit" value="Создать аккаунт"></p>
+	</form>
+</div>
+{% endblock %}

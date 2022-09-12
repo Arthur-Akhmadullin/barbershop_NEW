@@ -1173,7 +1173,8 @@ img {
 }
 
 .login-form input[type="text"],
-.login-form input[type="password"] {
+.login-form input[type="password"],
+.login-form input[type="email"] {
     width: 236px;
     margin: 0;
     margin-bottom: 10px;

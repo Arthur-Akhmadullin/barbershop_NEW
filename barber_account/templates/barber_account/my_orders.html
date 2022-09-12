@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	Ваши заказы - {{ block.super }}
+{% endblock %}
+
+{% block bodyclass %}
+	class="inner-page"
+{% endblock %}
+
+{% block content %}
+	<h1>Ваши заказы</h1>
+	
+	<ul class="breadcrumbs">
+        <li><a href="{% url 'main_page' %}">Главная</a></li>
+        <li><a href="{% url 'dashboard' %}">Личный кабинет</a></li>
+        <li class="current">Мои заказы</li>
+    </ul>
+	
+	</br>
+	<div style="font-size:22px; margin-bottom:30px;">
+		<div style="display:inline-block; width:200px; text-align:center;">Номер заказа</div>
+		<div style="display:inline-block; width:400px; text-align:center;">ФИО</div>
+		<div style="display:inline-block; width:200px; text-align:center;">Дата заказа</div>
+	</div>
+	
+	{% for order in my_orders %}
+		<div style="margin-bottom:30px; border:1px solid #000">
+			<div style="margin-bottom:20px; border-bottom:1px solid #000;">
+				<div style="display:inline-block; width:200px; font-size:18px; text-align:center;">{{ order.id }}</div>
+				<div style="display:inline-block; width:400px; font-size:18px; text-align:center;">{{ order.first_name }}  {{ order.last_name }}</div>
+				<div style="display:inline-block; width:200px; font-size:18px; text-align:center;">{{ order.created }}</div>		
+			</div>
+			
+			<div style="margin-left:100px; font-size:16px;">
+				<div style="display:inline-block; width:400px;">Товар</div>
+				<div style="display:inline-block; width:150px;">Цена</div>
+				<div style="display:inline-block; width:100px;">Количество</div>
+				<div style="display:inline-block; width:150px;">Итого</div>
+				
+				<div style="margin-top:10px; margin-bottom:10px;">
+				{% for item in order.items.all %}								
+					<div style="display:inline-block; width:400px;">{{ item.product }}</div>
+					<div style="display:inline-block; width:150px;">{{ item.price }}</div>
+					<div style="display:inline-block; width:100px;">{{ item.quantity }}</div>
+					<div style="display:inline-block; width:150px;">{{ item.get_cost }}</div>
+				{% endfor %}
+				</div>
+			</div>
+		</div>		
+	{% endfor %}
+{% endblock %}

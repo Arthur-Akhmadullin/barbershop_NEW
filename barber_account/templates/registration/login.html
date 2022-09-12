@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+	Авторизация - {{ block.super }}
+{% endblock %}
+
+{% block bodyclass %}
+	class="inner-page"
+{% endblock %}
+
+{% block content %}
+<div style="width: 300px">
+	<h1>Вход в личный кабинет</h1>
+	
+	{% if form.errors %}
+		<p>Ваши логин и пароль не совпадают. Попытайтесь еще раз.</p>
+	{% else %}
+		<p>Пожалуйста, введите ваши данные в форму ниже:</p>
+	{% endif %}
+	
+	<form class="login-form" action="{% url 'login' %}" method="post">
+		{{ form.username }}
+		{{ form.password }}
+		<input type="hidden" name="next" value="{{ next }}" />
+		<label class="login-checkbox">
+            <input type="checkbox" name="remember">
+            <span class="checkbox-indicator"></span>
+            Запомните меня
+        </label>
+
+		<a href="{% url 'password_reset' %}" class="restore">Я забыл пароль!</a>
+		</br>
+		<a href="{% url 'register' %}" class="restore">Регистрация</a>
+		{% csrf_token %}
+		<button class="btn" type="submit">Войти</button>
+	</form>
+	</br>
+</div>
+{% endblock %}

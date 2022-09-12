@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+	Dashboard
+{% endblock %}
+
+{% block bodyclass %}
+	class="inner-page"
+{% endblock %}
+
+{% block content %}
+	<h1>Dashboard</h1>
+	
+	<ul class="breadcrumbs">
+        <li><a href="{% url 'main_page' %}">Главная</a></li>
+        <li class="current">Личный кабинет</li>
+    </ul>
+	
+	</br>
+	<p>Добро пожаловать в личный кабинет</p>
+	<p>Вы можете:</p>
+	<p><a class="btn" href="{% url 'profile_edit' %}">отредактировать ваш профиль</a></p>
+	<p><a class="btn" href="{% url 'password_change' %}">изменить ваш пароль</a></p>
+	<p><a class="btn" href="{% url 'my_orders' %}">посмотреть ваши заказы</a></p>
+	<p><a class="btn" href="{% url 'logout' %}">Выйти из личного кабинета</a></p>
+{% endblock %}

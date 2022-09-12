@@ -6,49 +6,20 @@ class OrderCreateForm(forms.ModelForm):
     class Meta:
         model = Order
         fields = ['first_name', 'last_name', 'email', 'address', 'phone', 'user_comment']
+
+        '''
+        Для примера, стили TextInput и TextArea не стал указывать в widgets через attrs.
+        В файле order_create.html каждое поле формы заключил в div с классом order-form.
+        Таким образом, вид не поменялся, но необходимость прописывать класс каждого поля отпала. 
+        '''
         widgets = {
-            'first_name': forms.TextInput(attrs={'style': 'display:block;' 
-                                                    'width:200px;' 
-                                                    'padding-left: 10px;' 
-                                                    'padding-top:5px;' 
-                                                    'padding-bottom:5px;' 
-                                                    'font-size: 18px;'}),
-            'last_name': forms.TextInput(attrs={'style': 'display:block;' 
-                                                   'width:200px;' 
-                                                   'padding-left: 10px;' 
-                                                   'padding-top:5px;' 
-                                                   'padding-bottom:5px;' 
-                                                   'font-size: 18px;'}),
-            'email': forms.TextInput(attrs={'style': 'display:block;' 
-                                               'width:200px;' 
-                                               'padding-left: 10px;' 
-                                               'padding-top:5px;' 
-                                               'padding-bottom:5px;' 
-                                               'font-size: 18px;'}),
-            'address': forms.TextInput(attrs={'style': 'display:block;' 
-                                                 'width:200px;' 
-                                                 'padding-left: 10px;' 
-                                                 'padding-top:5px;' 
-                                                 'padding-bottom:5px;' 
-                                                 'font-size: 18px;'}),
-            'phone': forms.TextInput(attrs={'style': 'display:block;' 
-                                               'width:200px;' 
-                                               'padding-left: 10px;' 
-                                               'padding-top:5px;' 
-                                               'padding-bottom:5px;' 
-                                               'font-size: 18px;'}),
-            'user_comment': forms.Textarea(attrs={'style': 'display:block;'
-                                                            'width:200px;'
-                                                            'height:150px;'
-                                                            'padding-left: 10px;'
-                                                            'padding-top:5px;'
-                                                            'padding-bottom:5px;'
-                                                            'font-size: 18px;'}),
+            'user_comment': forms.Textarea(),
         }
+
         labels = {
             'first_name': ('Имя'),
             'last_name': ('Фамилия'),
-            'email': ('электронная почта'),
+            'email': ('Электронная почта'),
             'address': ('Адрес доставки'),
             'phone': ('Телефон'),
             'user_comment': ('Комментарий к заказу'),

@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css_style %}
+<link rel="stylesheet" href="{% static 'barber_account/css/account-style.css' %}">
+{% endblock %}
+
+{% block title %}
+	Редактирование профиля - {{ block.super }}
+{% endblock %}
+
+{% block bodyclass %}
+	class="inner-page"
+{% endblock %}
+
+{% block content %}
+	<h1>Редактирование профиля</h1>
+	
+	<ul class="breadcrumbs">
+        <li><a href="{% url 'main_page' %}">Главная</a></li>
+        <li><a href="{% url 'dashboard' %}">Личный кабинет</a></li>
+        <li class="current">Редактирование профиля</li>
+    </ul>
+	
+	</br>
+	<p>Вы можете отредактировать ваш профиль, используя форму ниже:</p>	
+	<form action="." method="post" enctype="multipart/form-data">
+		{{ user_form.as_p }}
+		{{ profile_form.as_p }}
+		{% csrf_token %}
+		<p><input class="btn" type="submit" value="Сохранить изменения"></p>
+	</form>
+{% endblock %}

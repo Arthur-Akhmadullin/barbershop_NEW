@@ -6,7 +6,9 @@
 	<meta charset="utf-8" />   
 	<link href="https://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="{% static 'css/normalize.css' %}">
-	<link rel="stylesheet" href="{% static 'css/style.css' %}">    
+	<link rel="stylesheet" href="{% static 'css/style.css' %}">
+	{% block css_style %}
+	{% endblock %}
 	<title>
 	{% block title %}
 		Barbershop Borodinski
@@ -22,7 +24,7 @@
 	{% include 'include/header.html' %}	
 
 	<main class="container">
-
+		{% include 'include/messages.html' %}
 		{% block content %}			
 		{% endblock %}
 	</main>

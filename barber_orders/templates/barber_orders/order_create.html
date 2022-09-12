@@ -1,4 +1,9 @@
 {% extends 'base.html' %}
+{% load static %}
+
+{% block css_style %}
+<link rel="stylesheet" href="{% static 'barber_orders/css/orders_style.css' %}">
+{% endblock %}
 
 {% block title %}
 	Оформление заказа - {{ block.super }}
@@ -31,8 +36,10 @@
 		<p>ИТОГО: {{ cart.get_total_price }} РУБ.</p>
 	</div>
 	
-	<form action="." method="post" class="order-form">
-		{{ order_create_form.as_table }}
+	<form action="." method="post">
+		<div class="order-form">
+		{{ order_create_form.as_p }}
+		</div>
 		<p><input class='btn' type="submit" value="Оформить"></p>
 		{% csrf_token %}
 	</form>

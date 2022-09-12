@@ -10,7 +10,7 @@ class ShopListView(ShopMixin, ListView):
     model = Product
     template_name = 'barber_shop/shop.html'
     context_object_name = 'products'
-    paginate_by = 2
+    paginate_by = 3
 
     def get_context_data(self, **kwargs):
         context = super(ShopListView, self).get_context_data(**kwargs)
@@ -23,7 +23,7 @@ class ShopProductGroupView(ShopMixin, ListView):
     model = Product
     template_name = 'barber_shop/shop.html'
     context_object_name = 'products'
-    paginate_by = 2
+    paginate_by = 3
     slug_url_kwarg = 'group_slug'
 
     def get_context_data(self, **kwargs):
@@ -42,7 +42,7 @@ class ShopProductGroupView(ShopMixin, ListView):
 class ShopFilter(ShopMixin, ListView):
     template_name = 'barber_shop/shop.html'
     context_object_name = 'products'
-    paginate_by = 2
+    paginate_by = 3
 
     def get_context_data(self, **kwargs):
         context = super(ShopFilter, self).get_context_data(**kwargs)

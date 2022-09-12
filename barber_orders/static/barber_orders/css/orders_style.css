@@ -1,0 +1,18 @@
+.order-form input{
+    display: block;
+    width: 200px;
+    padding-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: 18px;
+}
+
+.order-form textarea{
+    display: block;
+    width: 200px;
+	height: 150px;
+    padding-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: 18px;
+}

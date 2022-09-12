@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+	Выход - {{ block.super }}
+{% endblock %}
+
+{% block bodyclass %}
+	class="inner-page"
+{% endblock %}
+
+
+
+{% block content %}
+	<h1>Вы вышли из личного кабинета</h1>
+	<p>
+	Возвращайтесь!. Вы можете войти снова, кликнув по кнопке:
+	</br>
+	<a class="btn" href="{% url 'login' %}">войти снова</a> 
+	</p>
+{% endblock %}

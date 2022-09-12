@@ -1,5 +1,6 @@
 from django.db import models
 from barber_shop.models import Product
+from barber_account.models import Profile
 
 
 class Order(models.Model):
@@ -24,7 +25,7 @@ class Order(models.Model):
     updated = models.DateTimeField(auto_now=True)
     status = models.IntegerField(choices=STATUS_CHOICES, default=NO_PAID)
     #paid = models.BooleanField(default=False)
-    #profile = models.ForeignKey('Profile', related_name='profile_orders', on_delete=models.SET_NULL, null=True)
+    profile = models.ForeignKey(Profile, related_name='profile_orders', on_delete=models.SET_NULL, null=True)
 
     class Meta:
         ordering = ('-created',)

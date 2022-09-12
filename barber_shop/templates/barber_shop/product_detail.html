@@ -46,9 +46,8 @@
 
                     <p class="item-short-text">
 						{{ item.short_description }}
-                    </p>                    
+                    </p>  
 					
-					<!-- Эту форму надо вставить в div price-content, который выше -->
 					<div class="price-content">
 						<form action="{% url 'cart_add' item.id %}" method="post">
 						<span class="price">{{ item.price }} руб.</span>
