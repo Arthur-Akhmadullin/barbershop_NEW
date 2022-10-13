@@ -1,4 +1,6 @@
 Старый проект/
 .idea/
 requriements.txt
+readme.txt
 barber_project/settings.py
+static/js/popup_old.js

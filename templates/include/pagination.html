@@ -4,7 +4,7 @@
             {% if page_obj.number == p %}
                 <li class="current"><span>{{ p }}</span></li>
             {% elif p > page_obj.number|add:-3 and p < page_obj.number|add:3 %}
-                {% if path_parameters == '' %}
+                {% if not path_parameters %}
                     <li><a href="?page={{ p }}">{{ p }}</a></li>
                 {% else %}
                     <li><a href="?{{ path_parameters }}&page={{ p }}">{{ p }}</a></li>
