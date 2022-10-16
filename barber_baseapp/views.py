@@ -23,7 +23,6 @@ class RecordCreate(View):
 			record = Record(name=cd['name'], phone=cd['phone'], date=cd['date'], time=cd['time'])
 			record.save()
 			return render(request, 'barber_baseapp/record_created.html', {'record': record})
-
 		return redirect('main_page')
 
 
