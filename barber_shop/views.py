@@ -82,22 +82,3 @@ class ShopDetailView(DetailView):
                                  group__slug__iexact=self.kwargs['group_slug'],
                                  slug__iexact=self.kwargs['slug']
                                  )
-
-
-'''
-Для вызова 404 страницы надо сделать примерно так. И для категорий, и для фильтра, и для детальной
-страницы:
-
-from .exceptions import PostDoesNotExist
-
-
-class PostDetailView(DetailView):
-
-    def get_object(self, queryset=None):
-        slug = self.kwargs.get(self.slug_url_kwarg, None)
-        try:
-            return queryset.get(slug=slug)
-        except PostDoesNotExist:
-            raise Http404('Ох, нет объекта;)')
-'''
-

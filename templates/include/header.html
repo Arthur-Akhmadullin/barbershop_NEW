@@ -15,7 +15,7 @@
 				<li class="{% if url_name == 'main_page' %}active{% endif %}"><a href="{% url 'main_page' %}">Информация</a></li>
 				<li class="{% if url_name == 'news_page' or url_name == 'news_detail' %}active{% endif %}"><a href="{% url 'news_page' %}">Новости</a></li>
 				<li class="{% if url_name == 'price_page' %}active{% endif %}"><a href="{% url 'price_page' %}">Прайс-лист</a></li>
-				<li class="{% if url_name == 'shop_page' %}active{% endif %}"><a href="{% url 'shop_page' %}">Магазин</a></li>
+				<li class="{% if '/shop/' in request.path %}active{% endif %}"><a href="{% url 'shop_page' %}">Магазин</a></li>
 				<!--<li><a href="#">Контакты</a></li>-->				
 			</ul>
 			{% endwith %}
@@ -24,18 +24,18 @@
 		<div class="cart-block">		
 			{% with total_items=cart|length %}
 				{% if cart|length > 0 %}						
-					<a class="login2" href="{% url 'cart_detail' %}">
+					<a class="dashboard" href="{% url 'cart_detail' %}">
 						{{ total_items }} шт-{{ cart.get_total_price }} р.
 					</a>
 				{% else %}
-					<span class="login2" href="#">0 тов.</span>
+					<span class="dashboard" href="#">0 тов.</span>
 				{% endif %}
 			{% endwith %}				
 		</div>
 		
         <div class="user-block">
             {% if request.user.is_authenticated %}
-				<a class="login2" href="{% url 'dashboard' %}">Кабинет</a>
+				<a class="dashboard" href="{% url 'dashboard' %}">Кабинет</a>
 			{% else %}
 				<a class="login" href="{% url 'login' %}">Вход</a>
 			{% endif %}

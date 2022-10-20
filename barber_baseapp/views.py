@@ -34,16 +34,9 @@ class NewsListView(ListView):
 	def get_context_data(self, **kwargs):
 		context = super(NewsListView, self).get_context_data(**kwargs)
 		context['last_news'] = News.objects.all().first()
-		#if all_news.count()%2 == 0:
-			#first_news = all_news.last()
 		return context
 
 	def get_queryset(self):
-		# all_news = News.objects.all()
-		# left_news = all_news[1:all_news.count():2]
-		# right_news = all_news[2:all_news.count():2]
-		# zip_news = zip_longest(left_news, right_news, fillvalue=None)
-		# return list(zip_news)
 		return News.objects.all()[1:]
 
 
