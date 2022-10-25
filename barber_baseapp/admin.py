@@ -5,7 +5,7 @@ from .models import News, Record, Price
 
 @admin.register(News)
 class NewsAdmin(admin.ModelAdmin):
-    list_display = ['title', 'date']
+    list_display = ['id', 'title', 'date']
 
 
 @admin.register(Record)
