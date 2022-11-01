@@ -29,7 +29,15 @@
 ---
 
 ## Как установить проект
-
+1) Создайте папку для проекта, например, barbershop: mkdir barbershop
+2) Перейдите в созданную папку: cd barbershop. Выполните команду git clone https://github.com/Arthur-Akhmadullin/barbershop_NEW
+3) Перейдите в папку barbershop_NEW
+4) Удалите каталог barbervenv
+5) Удалите каталог .git: git rm -rf .git
+6) Выполните команду git init
+7) Через консоль перейдите в папку barbershop_NEW. Создайте виртуальное окружение
+8) Установите компоненты: pip install -r requirements.txt
+9) Настройте файл settings.py
 ---
 
 ## Где посмотреть
