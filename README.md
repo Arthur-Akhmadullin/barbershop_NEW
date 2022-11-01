@@ -33,7 +33,7 @@
 ---
 
 ## Где посмотреть
-Демонстрационная версия проекта размещена по адресу: barbershop.pythonanywhere.com
+Демонстрационная версия проекта размещена по адресу: [barbershop.pythonanywhere.com](https://barbershop.pythonanywhere.com)
 
 ---
 
