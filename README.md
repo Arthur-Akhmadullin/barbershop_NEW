@@ -29,15 +29,19 @@
 ---
 
 ## Как установить проект
-1) Создайте папку для проекта, например, barbershop: mkdir barbershop
-2) Перейдите в созданную папку: cd barbershop. Выполните команду git clone https://github.com/Arthur-Akhmadullin/barbershop_NEW
-3) Перейдите в папку barbershop_NEW
-4) Удалите каталог barbervenv
-5) Удалите каталог .git: git rm -rf .git
-6) Выполните команду git init
-7) Через консоль перейдите в папку barbershop_NEW. Создайте виртуальное окружение
-8) Установите компоненты: pip install -r requirements.txt
-9) Настройте файл settings.py
+1) Скопируйте содержимое проекта командой 'git clone https://github.com/Arthur-Akhmadullin/barbershop_NEW'
+2) В папке barbershop_NEW удалите каталог barbervenv, а также каталог .git командой 'git rm -rf .git'
+3) Создайте свой репозиторий командой 'git init'
+4) Создайте виртуальное окружение. Сначала перейдите в папку barbershop_NEW, выполнив в командной строке 'cd barbershop_NEW'. Затем выполните команду 'python -m venv <название-вашего-виртуального-окружения>'
+5) Далее необходимо установить библиотеки, используемые в проекте. Последовательно выполните команды: 'python -m pip install --upgrade pipi', 'pip install -r requirements.txt'
+6) Внесите изменения в файл settings.py.
+  6.1) Переменная DEBUG = True
+  6.2) Переменная SECRET_KEY = 'секретный ключ'. Сгенерировать секретный ключ можно на сайте [djecrety.ir](https://djecrety.ir)
+  6.3) Переменная ALLOWED_HOSTS = ['127.0.0.1']
+  6.4) Переменная CART_SESSION_ID = 'cart'
+  6.5) Переменная STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+7) Выполните миграции базы данных: 'python manage.py migrate'
+8) Создайте профиль суперпользователя (администратора): 'python manage.py createsuperuser'
 ---
 
 ## Где посмотреть
