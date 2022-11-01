@@ -34,12 +34,12 @@
 3) Создайте свой репозиторий командой `git init`
 4) Создайте виртуальное окружение. Сначала перейдите в папку barbershop_NEW, выполнив в командной строке `cd barbershop_NEW`. Затем выполните команду `python -m venv <название-вашего-виртуального-окружения>`
 5) Далее необходимо установить библиотеки, используемые в проекте. Последовательно выполните команды: `python -m pip install --upgrade pipi`, `pip install -r requirements.txt`
-*6) Внесите изменения в файл settings.py.
-+6.1. Переменная DEBUG = True
-+6.2) Переменная SECRET_KEY = 'секретный ключ'. Сгенерировать секретный ключ можно на сайте [djecrety.ir](https://djecrety.ir)
-+6.3) Переменная ALLOWED_HOSTS = ['127.0.0.1']
-+6.4) Переменная CART_SESSION_ID = 'cart'
-+6.5) Переменная STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+6) Внесите изменения в файл settings.py.
+    +6.1. Переменная DEBUG = True
+    +6.2) Переменная SECRET_KEY = 'секретный ключ'. Сгенерировать секретный ключ можно на сайте [djecrety.ir](https://djecrety.ir)
+    +6.3) Переменная ALLOWED_HOSTS = ['127.0.0.1']
+    +6.4) Переменная CART_SESSION_ID = 'cart'
+    +6.5) Переменная STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 8) Выполните миграции базы данных: `python manage.py migrate`
 9) Создайте профиль суперпользователя (администратора): `python manage.py createsuperuser`
 ---
